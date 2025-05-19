@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         generarNuevoNumero()
         actualizarTextViewIntentos(textViewIntentos)
+        actualizarPuntajesEnPantalla()
 
         botonEnviar.setOnClickListener {
             val entrada = editTextNumber.text.toString()
