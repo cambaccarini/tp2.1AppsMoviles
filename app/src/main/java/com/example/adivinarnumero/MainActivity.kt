@@ -15,12 +15,18 @@ class MainActivity : AppCompatActivity() {
 
     private var numeroAleatorio = 0
     private var intentosRestantes = 3
-
+    private var puntajeActual = 0
+    private lateinit var dbHelper: ScoreDatabaseHelper
+    private lateinit var textViewPuntajeActual: TextView
+    private lateinit var textViewPuntajeMaximo: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        dbHelper = ScoreDatabaseHelper(this)
+        textViewPuntajeActual = findViewById(R.id.textViewPuntajeActual)
+        textViewPuntajeMaximo = findViewById(R.id.textViewPuntajeMaximo)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -52,6 +58,12 @@ class MainActivity : AppCompatActivity() {
 
             if (numeroIngresado == numeroAleatorio) {
                 Toast.makeText(this, "¡Adivinaste! Juega de nuevo", Toast.LENGTH_SHORT).show()
+                puntajeActual += 10
+                val maximo = dbHelper.obtenerPuntajeMaximo()
+                if (puntajeActual > maximo) {
+                    dbHelper.insertarPuntaje(puntajeActual)
+                }
+                actualizarPuntajesEnPantalla()
                 generarNuevoNumero()
                 actualizarTextViewIntentos(textViewIntentos)
             } else {
@@ -60,6 +72,8 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "Intenta de nuevo!", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "El número era $numeroAleatorio. Perdiste :( ", Toast.LENGTH_LONG).show()
+                    puntajeActual = 0
+                    actualizarPuntajesEnPantalla()
                     generarNuevoNumero()
                 }
                 actualizarTextViewIntentos(textViewIntentos)
@@ -67,11 +81,17 @@ class MainActivity : AppCompatActivity() {
             editTextNumber.text.clear()
         }
     }
+
     private fun generarNuevoNumero() {
         numeroAleatorio = Random.nextInt(1, 6)
         intentosRestantes = 3
     }
     private fun actualizarTextViewIntentos(textView: TextView) {
         textView.text = "Intentos restantes: $intentosRestantes"
+    }
+    private fun actualizarPuntajesEnPantalla() {
+        textViewPuntajeActual.text = "Puntaje actual: $puntajeActual"
+        val maximo = dbHelper.obtenerPuntajeMaximo()
+        textViewPuntajeMaximo.text = "Puntaje máximo: $maximo"
     }
 }
