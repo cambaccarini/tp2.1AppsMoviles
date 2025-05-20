@@ -13,4 +13,5 @@
     <string name="puntaje_maximo">Puntaje máximo: %1$d</string>
     <string name="stop_game">Dejar de jugar</string>
     <string name="puntaje_maximo_usuario">Tu puntaje máximo: %1$d</string>
+    <string name="titleleaderboard">Leaderboard</string>
 </resources>
