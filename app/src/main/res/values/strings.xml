@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">adivinar numero</string>
+    <string name="start_button_text">Comenzar</string>
+    <string name="historico_button_text">Ver Histórico</string>
+    <string name="adivinar_button_text">Enviar</string>
+    <string name="error_nombre_vacio">Ingresa tu nombre</string>
+    <string name="error_numero_rango">Ingresa un número entre 1 y 5</string>
+    <string name="msg_acertaste">¡Adivinaste! +10 puntos</string>
+    <string name="msg_fallaste">Fallaste. Te quedan %1$d intentos</string>
+    <string name="msg_partida_terminada">Finalizo el juego. Tu puntaje: %1$d</string>
+    <string name="intentos_restantes">Intentos restantes: %1$d</string>
+    <string name="puntaje_actual">Puntaje actual: %1$d</string>
+    <string name="puntaje_maximo">Puntaje máximo: %1$d</string>
+    <string name="stop_game">Dejar de jugar</string>
+    <string name="puntaje_maximo_usuario">Tu puntaje máximo: %1$d</string>
 </resources>
