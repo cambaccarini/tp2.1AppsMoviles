@@ -5,6 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f9f9f9"
+
     tools:context=".MainActivity">
 
     <TextView
@@ -54,7 +56,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ingrese un número entre 1 y 5"
-        android:textColor="#E9E4E4"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/editTextNumber"
@@ -70,7 +71,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Intentos restantes: 3"
-        android:textColor="#F4F1F1"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView"
